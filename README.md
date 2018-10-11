@@ -45,4 +45,14 @@ ex:
 docker run -it --name odoo-dev -p 8069:8069 --network my-network odoo
 ```
 
+__Pour lancer votre application__
+```sh
+docker start <ODOO CONTAINER NAME>
+```
+ex:
+```sh
+docker start odoo-tp-dev
+```
+
+
 **2ème méthode : docker-compose**
