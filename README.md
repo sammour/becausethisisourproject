@@ -14,7 +14,7 @@ docker build -t <IMAGE NAME> .
 ```
 ex:
 ```sh
-docker build -t odoo-tp .
+docker build -t odoo .
 ```
 
 __créer un network__
@@ -23,7 +23,7 @@ docker network create <NETWORK NAME>
 ```
 ex:
 ```sh
-docker network create my-network-odoo
+docker network create my-network
 ```
 
 __récupérer l'image docker hub et créer le conteneur__
@@ -42,7 +42,7 @@ docker run -it --name < ODOO CONTAINER NAME> -p 8069:8069 --network <NETWORK NAM
 ```
 ex:
 ```sh
-docker run -it --name odoo-tp-dev -p 8069:8069 --network my-network-odoo odoo-tp
+docker run -it --name odoo-dev -p 8069:8069 --network my-network odoo
 ```
 
 **2ème méthode : docker-compose**
