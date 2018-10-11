@@ -6,9 +6,9 @@
 
 **1ère méthode : docker en lignes de commandes**
 
-cloner le repository
+__cloner le repository__
 
-construire l'image
+__construire l'image__
 ```sh
 docker build -t <IMAGE NAME> .
 ```
@@ -17,7 +17,7 @@ ex:
 docker build -t odoo-tp .
 ```
 
-créer un network
+__créer un network__
 ```sh
 docker network create <NETWORK NAME>
 ```
@@ -26,7 +26,7 @@ ex:
 docker network create my-network-odoo
 ```
 
-récupérer l'image docker hub et créer le conteneur
+__récupérer l'image docker hub et créer le conteneur__
 
 ```sh
 docker run --name <DATABASE CONTAINER NAME> -e POSTGRES_PASSWORD=odoo -e POSTGRES_USER=odoo -e POSTGRES_DB=postgres -d postgres --network <NETWORK NAME>
@@ -36,7 +36,7 @@ ex:
 docker run --name postgresql -e POSTGRES_PASSWORD=odoo -e POSTGRES_USER=odoo -e POSTGRES_DB=postgres -d postgres
 ```
 
-demarrer le conteneur
+__demarrer le conteneur__
 ```sh  
 docker run -it --name < ODOO CONTAINER NAME> -p 8069:8069 --network <NETWORK NAME> <IMAGE NAME>
 ```
