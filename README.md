@@ -16,6 +16,7 @@ ex:
 ```sh
 docker build -t odoo-tp .
 ```
+
 créer un network
 ```sh
 docker network create <NETWORK NAME>
@@ -25,7 +26,7 @@ ex:
 docker network create my-network-odoo
 ```
 
-récupère l'image docker hub et créé le conteneur
+récupérer l'image docker hub et créer le conteneur
 
 ```sh
 docker run --name <DATABASE CONTAINER NAME> -e POSTGRES_PASSWORD=odoo -e POSTGRES_USER=odoo -e POSTGRES_DB=postgres -d postgres --network <NETWORK NAME>
@@ -36,7 +37,6 @@ docker run --name postgresql -e POSTGRES_PASSWORD=odoo -e POSTGRES_USER=odoo -e 
 ```
 
 demarrer le conteneur
-
 ```sh  
 docker run -it --name < ODOO CONTAINER NAME> -p 8069:8069 --network <NETWORK NAME> <IMAGE NAME>
 ```
