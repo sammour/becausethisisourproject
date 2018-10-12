@@ -4,16 +4,55 @@ services:
     image: odoo:12.0
     depends_on:
       - db
-    ports:
-      - "8069:8069"
+    expose:
+      - 8069
+      - 80
+    networks:
+      - odoo-network
   db:
     image: postgres:10
+#on force l'ip du fakesmtp (odoo and adminer depend on db which depends on fakesmtp)
+    depends_on:
+      - fakesmtp
     environment:
       - POSTGRES_PASSWORD=odoo
       - POSTGRES_USER=odoo
       - POSTGRES_DB=postgres
+    networks:
+      - odoo-network
   adminer:
     image: adminer
+    depends_on:
+      - db
     restart: always
     ports:
       - 8081:8080
+    networks:
+      - odoo-network
+  fakesmtp:
+    image: digiplant/fake-smtp
+    expose:
+      - 25
+    volumes:
+      - ./email:/var/mail
+    networks:
+      - odoo-network
+  lb:
+    image: dockercloud/haproxy
+    depends_on:
+      - db
+    links:
+      - web
+    ports:
+      - '8069:80'
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+    networks:
+      - odoo-network
+networks:
+  odoo-network:
+    driver: bridge
+    ipam:
+      driver: default
+      config:
+        - subnet: 172.26.0.0/16
