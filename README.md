@@ -150,3 +150,8 @@ __Configuration Fakesmtp (simuler des envois de  mails):__
 5. Laisser 25 comme port et tester la connexion. Vous devriez observer un message de Succès.
 
 Vous pouvez maintenant accéder aux messages attrapés par fakesmtp dans le dossier /email présent dans à la racine du projet.
+
+
+**TODO**
+
+* Fixer le scaling (csrf token fix)
