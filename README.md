@@ -115,3 +115,13 @@ docker-compose up
 Vous pouvez maintenant finir la configuration de Odoo en accédant à localhost:8069
 
 Vous pouvez aussi administrer votre base de données en passant par Adminer : localhost:8081
+
+__Configuration Fakesmtp (simuler des envois de  mails):__
+
+* Accéder à Odoo, aller dans __Configuration -> Paramètres généraux__
+* Cocher la case __Serveur de messagerie externe__ puis cliquer sur __Serveur de messagerie sortant__
+* Vous devriez observer une liste vide, il faut cliquer sur __Créer__.
+* Décrire le serveur (pour la vue liste précédente), par exemple FakeSmtp, et dans les __Informations sur la connexion__ indiquer 172.26.0.2 dans le champs __Serveur SMTP__
+* Laisser 25 comme port et tester la connexion. Vous devriez observer un message de Succès.
+
+Vous pouvez maintenant accéder aux messages attrapés par fakesmtp dans le dossier /email présent dans à la racine du projet.
