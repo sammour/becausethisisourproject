@@ -43,14 +43,24 @@ ex:
 docker network create my-network
 ```
 
-__récupérer l'image docker hub de Postgresql , créer le conteneur et rattacher au network__
+__récupérer l'image docker hub de Postgresql et créer le conteneur __
 
 ```sh
-docker run --name <DATABASE CONTAINER NAME> -e POSTGRES_PASSWORD=odoo -e POSTGRES_USER=odoo -e POSTGRES_DB=postgres -d postgres --network <NETWORK NAME>
+docker run --name <DATABASE CONTAINER NAME> -e POSTGRES_PASSWORD=odoo -e POSTGRES_USER=odoo -e POSTGRES_DB=postgres -d postgres
 ```
 ex:
 ```sh
-docker run --name postgresql-container -e POSTGRES_PASSWORD=odoo -e POSTGRES_USER=odoo -e POSTGRES_DB=postgres -d postgres --network my-network
+docker run --name postgresql-container -e POSTGRES_PASSWORD=odoo -e POSTGRES_USER=odoo -e POSTGRES_DB=postgres -d postgres
+```
+
+__rattacher le conteneur au network__
+
+```sh
+docker network connect <NETWORK NAME> <DATABASE CONTAINER NAME>
+```
+ex:
+```sh
+docker network connect my-network-odoo postgre-tp
 ```
 
 __demarrer le conteneur__
@@ -90,6 +100,21 @@ docker start odoo-container
 ```
 
 Vous pouvez maintenant finir la configuration de Odoo en accédant à localhost:8069
+
+
+__Configuration sous mac de Fakesmtp (simuler des envois de  mails):__
+
+1. Accéder à Odoo, aller dans __Configuration -> Paramètres généraux__
+2. Cocher la case __Serveur de messagerie externe__ puis cliquer sur __Serveur de messagerie sortant__
+3. Vous devriez observer une liste vide, il faut cliquer sur __Créer__.
+4. Décrire le serveur (pour la vue liste précédente), par exemple FakeSmtp, et dans les __Informations sur la connexion__
+5. Afin de recuperer l'adresse ip fournie __en0:__ dans votre terminal faite un :
+```sh ifconfig```
+6. Ouvrez votre __utilitaire réseau__, saisissez __localhost__ dans :"Saisissez une adresse Internet pour rechercher les ports ouverts." et notez l'__Open TCP Port: 	1025   		blackjack__.
+7. Revenez sur Odoo et indiquer l'adresse ip correspondant à l' __en0:__ dans le champs __Serveur SMTP__
+5. Notez le port correspondant a blackjack __1025__ comme port et tester la connexion. Vous devriez observer un message de Succès.
+
+Vous pouvez maintenant accéder aux messages attrapés par fakesmtp dans le dossier /tmp/fakemail
 
 
 **2ème méthode : docker-compose**
