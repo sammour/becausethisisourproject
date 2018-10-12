@@ -4,8 +4,9 @@ services:
     image: odoo:12.0
     depends_on:
       - db
-    ports:
-      - "8069:8069"
+    expose:
+      - 8069
+      - 80
     networks:
       - odoo-network
   db:
@@ -34,6 +35,18 @@ services:
       - 25
     volumes:
       - ./email:/var/mail
+    networks:
+      - odoo-network
+  lb:
+    image: dockercloud/haproxy
+    depends_on:
+      - db
+    links:
+      - web
+    ports:
+      - '8069:80'
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
     networks:
       - odoo-network
 networks:
