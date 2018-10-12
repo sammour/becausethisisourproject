@@ -90,3 +90,5 @@ docker-compose up
 ```
 
 Vous pouvez maintenant finir la configuration de Odoo en accédant à localhost:8069
+
+Vous pouvez aussi administrer votre base de données en passant par Adminer : localhost:8081
