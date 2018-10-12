@@ -2,7 +2,7 @@
 
 **Projet Docker**
 
-# Déploiement d'un erp (odoo) : 
+# Déploiement d'un erp (odoo) avec une base Postgresql et fakeSMTP: 
 
 **1ère méthode : docker en lignes de commandes**
 ================================================
@@ -38,7 +38,7 @@ ex:
 docker network create my-network
 ```
 
-__récupérer l'image docker hub et créer le conteneur__
+__récupérer l'image docker hub de Postgresql , créer le conteneur et rattacher au network__
 
 ```sh
 docker run --name <DATABASE CONTAINER NAME> -e POSTGRES_PASSWORD=odoo -e POSTGRES_USER=odoo -e POSTGRES_DB=postgres -d postgres --network <NETWORK NAME>
@@ -55,6 +55,24 @@ docker run -it --name <ODOO CONTAINER NAME> -p 8069:8069 --network <NETWORK NAME
 ex:
 ```sh
 docker run -it --name odoo-container -p 8069:8069 --network my-network -d odoo
+```
+
+__récupérer l'image docker hub de fakesmtp et créer le conteneur__
+ ```sh
+docker run -d --name <FAKESMTP CONTAINER NAME> -p 1025:25 -v /tmp/fakemail:/var/mail digiplant/fake-smtp
+```
+ex:
+ ```sh
+docker run -d --name fakesmtp -p 1025:25 -v /tmp/fakemail:/var/mail digiplant/fake-smtp
+```
+
+__rattacher le conteneur de fakesmtp au network__
+```sh
+docker network connect <NETWORK NAME> <CONTAINER NAME>
+```
+ex:
+```sh
+docker network connect my-network fakesmtp
 ```
 
 __Pour relancer votre application après un redémarrage système__
