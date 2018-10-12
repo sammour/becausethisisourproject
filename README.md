@@ -1,7 +1,3 @@
-# becausethisisourproject
-
-**Projet Docker**
-
 # Déploiement d'un erp (odoo) avec une base Postgresql et fakeSMTP: 
 
 **1ère méthode : docker en lignes de commandes**
