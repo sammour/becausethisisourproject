@@ -7,6 +7,13 @@
 **1ère méthode : docker en lignes de commandes**
 ================================================
 
+__Prérequis :__
+* docker
+```sh
+sudo apt install docker
+
+```
+
 Cloner le repository, entrer dans le dossier
 ```sh
 git clone https://github.com/sammour/becausethisisourproject.git
@@ -58,6 +65,8 @@ ex:
 ```sh
 docker start odoo-tp-dev
 ```
+
+Vous pouvez maintenant finir la configuration de Odoo en accédant à localhost:8069
 
 
 **2ème méthode : docker-compose**
