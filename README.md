@@ -60,7 +60,7 @@ docker network connect <NETWORK NAME> <DATABASE CONTAINER NAME>
 ```
 ex:
 ```sh
-docker network connect my-network-odoo postgre-tp
+docker network connect my-network postgresql-container
 ```
 
 __demarrer le conteneur__
