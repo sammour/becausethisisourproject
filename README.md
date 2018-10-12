@@ -81,7 +81,7 @@ docker start <ODOO CONTAINER NAME>
 ```
 ex:
 ```sh
-docker start odoo-tp-dev
+docker start odoo-container
 ```
 
 Vous pouvez maintenant finir la configuration de Odoo en accédant à localhost:8069
