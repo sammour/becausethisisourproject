@@ -20,6 +20,11 @@ git clone https://github.com/sammour/becausethisisourproject.git
 cd becausethisisourproject
 ```
 
+__modifier les droits pour le fichier entrypoint.sh__
+```sh
+sudo chmod 755 entrypoint.sh
+```
+
 __construire l'image de l'erp__
 ```sh
 docker build -t <IMAGE NAME> .
