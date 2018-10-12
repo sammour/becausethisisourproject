@@ -32,11 +32,11 @@ docker build -t odoo .
 
 __créer un network__
 ```sh
-docker network create <NETWORK NAME> --subnet=172.22.0.0/16 --driver=bridge
+docker network create <NETWORK NAME> --subnet=172.99.0.0/16 --driver=bridge
 ```
 ex:
 ```sh
-docker network create my-network --subnet=172.22.0.0/16 --driver=bridge
+docker network create my-network --subnet=172.99.0.0/16 --driver=bridge
 ```
 On attachera les containers au network au moment de leur création.
 
