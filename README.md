@@ -43,7 +43,7 @@ ex:
 docker network create my-network
 ```
 
-__récupérer l'image docker hub de Postgresql et créer le conteneur __
+__récupérer l'image docker hub de Postgresql et créer le conteneur__
 
 ```sh
 docker run --name <DATABASE CONTAINER NAME> -e POSTGRES_PASSWORD=odoo -e POSTGRES_USER=odoo -e POSTGRES_DB=postgres -d postgres
